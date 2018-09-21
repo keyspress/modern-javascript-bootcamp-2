@@ -32,12 +32,26 @@ const notes = [
 //   console.log(`Item ${i + 1}: ${notes[i]}`);
 // }
 
-console.log(notes.length);
-console.log(notes);
+// const findNote = function(notes, noteTitle) {
+//   const index = notes.findIndex(function(note) {
+//     return note.title.toLowerCase() === noteTitle.toLowerCase();
+//   });
+//   return notes[index];
+// };
+const findNote = function(notes, noteTitle) {
+  return notes.find(function(note, index) {
+    return note.title === noteTitle;
+  });
+};
+const note = findNote(notes, 'Office modification');
+console.log(note);
 
-const index = notes.findIndex(function(note, index) {
-  // console.log(note, index);
-  return note.title === 'Office modification';
-});
+// console.log(notes.length);
+// console.log(notes);
 
-console.log(index);
+// const index = notes.findIndex(function(note, index) {
+//   // console.log(note, index);
+//   return note.title === 'Office modification';
+// });
+
+// console.log(index);
