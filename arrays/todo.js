@@ -9,6 +9,6 @@ todos.forEach(function(item, index) {
   console.log(`${index + 1}. ${item}`);
 });
 
-for (let i = 0; i < todos.length; i++) {
-  console.log(`${i + 1}. ${todos[i]}`);
-}
+// for (let i = 0; i < todos.length; i++) {
+//   console.log(`${i + 1}. ${todos[i]}`);
+// }
