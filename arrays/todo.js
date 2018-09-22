@@ -32,7 +32,15 @@ const deleteTodo = (todos, text) => {
 };
 
 deleteTodo(todos, 'Go to Disney World');
-console.log(todos);
+// console.log(todos);
+
+const findTodo = function(todos) {
+  return todos.filter(function(todo) {
+    return !todo.completed;
+  });
+};
+
+// console.log(findTodo(todos));
 
 // todos.splice(2, 1);
 // todos.push('Steal milk');
@@ -46,3 +54,18 @@ console.log(todos);
 // for (let i = 0; i < todos.length; i++) {
 //   console.log(`${i + 1}. ${todos[i]}`);
 // }
+
+const sortTodos = todos => {
+  todos.sort((a, b) => {
+    if (!a.completed && b.completed) {
+      return -1;
+    } else if (!b.completed && a.completed) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+};
+
+sortTodos(todos);
+console.log(todos);
