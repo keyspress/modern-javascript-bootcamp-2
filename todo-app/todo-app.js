@@ -36,6 +36,6 @@ todos.forEach(todo => {
   document.querySelector('body').appendChild(p);
 });
 
-document.querySelector('button').addEventListener('click', e => {
+document.querySelector('#add-todo').addEventListener('click', e => {
   console.log('You clicked it');
 });
