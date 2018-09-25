@@ -13,15 +13,6 @@ const notes = [
   }
 ];
 
-// const p = document.querySelector('p');
-// p.remove();
-
-const ps = document.querySelectorAll('p');
-
-// ps.forEach(p => p.remove());
-// ps.forEach(p => console.log(p.textContent));
-ps.forEach(p => console.log((p.textContent = '********')));
-
-const newParagraph = document.createElement('p');
-newParagraph.textContent = 'This is a brand spankin new element!';
-document.querySelector('body').appendChild(newParagraph);
+document.querySelector('button').addEventListener('click', e => {
+  e.target.textContent = 'Well done!';
+});
