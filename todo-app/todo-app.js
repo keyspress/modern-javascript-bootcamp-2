@@ -39,3 +39,7 @@ todos.forEach(todo => {
 document.querySelector('#add-todo').addEventListener('click', e => {
   console.log('You clicked it');
 });
+
+document.querySelector('#new-todo-text').addEventListener('input', e => {
+  console.log(e.target.value);
+});

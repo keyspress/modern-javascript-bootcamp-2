@@ -22,3 +22,7 @@ document.querySelector('#remove-all').addEventListener('click', e => {
     note.remove();
   });
 });
+
+document.querySelector('#search-text').addEventListener('input', e => {
+  console.log(e.target.value);
+});
