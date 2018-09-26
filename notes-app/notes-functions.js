@@ -12,12 +12,22 @@ const saveNotes = notes => {
 };
 
 const generateNoteDOM = note => {
-  const noteEl = document.createElement('p');
+  const noteEl = document.createElement('div');
+  const textEl = document.createElement('span');
+  const button = document.createElement('button');
+
+  // Setup remove note button
+  button.textContent = 'x';
+  noteEl.appendChild(button);
+
+  // Setup note title text
   if (note.title.length > 0) {
-    noteEl.textContent = note.title;
+    textEl.textContent = note.title;
   } else {
-    noteEl.textContent = 'Unamed note';
+    textEl.textContent = 'Unamed note';
   }
+  noteEl.appendChild(textEl);
+
   return noteEl;
 };
 
