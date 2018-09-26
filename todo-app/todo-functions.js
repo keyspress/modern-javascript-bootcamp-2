@@ -25,9 +25,6 @@ const toggleTodo = id => {
   const todo = todos.find(todo => {
     return todo.id === id;
   });
-  // const todoIndex = todos.findIndex(todo => {
-  //   return todo.id === id;
-  // });
 
   if (todo !== undefined) {
     todo.completed = !todo.completed;
