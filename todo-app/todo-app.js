@@ -22,7 +22,8 @@ const todos = [
 ];
 
 const filters = {
-  searchText: ''
+  searchText: '',
+  hideCompleted: false
 };
 
 const renderTodos = (todos, filters) => {
@@ -40,7 +41,9 @@ const renderTodos = (todos, filters) => {
   summary.textContent = `You have ${incompleteTodos.length} todos left`;
   document.querySelector('#todos').appendChild(summary);
 
-  filteredTodos.forEach(todo => {
+  let renderedTodos = filters.hideCompleted ? incompleteTodos : filteredTodos;
+
+  renderedTodos.forEach(todo => {
     const todoEl = document.createElement('p');
     todoEl.textContent = todo.text;
     document.querySelector('#todos').appendChild(todoEl);
@@ -48,14 +51,6 @@ const renderTodos = (todos, filters) => {
 };
 
 renderTodos(todos, filters);
-
-// document.querySelector('#add-todo').addEventListener('click', e => {
-//   console.log('You clicked it');
-// });
-
-// document.querySelector('#new-todo-text').addEventListener('input', e => {
-//   console.log(e.target.value);
-// });
 
 document.querySelector('#search-text').addEventListener('input', e => {
   filters.searchText = e.target.value;
@@ -70,4 +65,9 @@ document.querySelector('#new-todo').addEventListener('submit', e => {
   });
   renderTodos(todos, filters);
   e.target.elements.todoText.value = '';
+});
+
+document.querySelector('#hideToggle').addEventListener('change', e => {
+  filters.hideCompleted = e.target.checked;
+  renderTodos(todos, filters);
 });
