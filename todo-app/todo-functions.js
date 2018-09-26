@@ -11,6 +11,29 @@ const saveTodos = todos => {
   localStorage.setItem('todos', JSON.stringify(todos));
 };
 
+const removeTodo = id => {
+  const todoIndex = todos.findIndex(todo => {
+    return todo.id === id;
+  });
+
+  if (todoIndex > -1) {
+    todos.splice(todoIndex, 1);
+  }
+};
+
+const toggleTodo = id => {
+  const todo = todos.find(todo => {
+    return todo.id === id;
+  });
+  // const todoIndex = todos.findIndex(todo => {
+  //   return todo.id === id;
+  // });
+
+  if (todo !== undefined) {
+    todo.completed = !todo.completed;
+  }
+};
+
 const renderTodos = (todos, filters) => {
   const filteredTodos = todos.filter(todo => {
     return todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
@@ -41,7 +64,13 @@ const generateTodoDOM = todo => {
 
   // Setup checkbox
   checkbox.setAttribute('type', 'checkbox');
+  checkbox.checked = todo.completed;
   todoEl.appendChild(checkbox);
+  checkbox.addEventListener('change', () => {
+    toggleTodo(todo.id);
+    saveTodos(todos);
+    renderTodos(todos, filters);
+  });
 
   // Setup text
   todoText.textContent = todo.text;
@@ -50,6 +79,11 @@ const generateTodoDOM = todo => {
   // Setup button
   removeButton.textContent = 'x';
   todoEl.appendChild(removeButton);
+  removeButton.addEventListener('click', () => {
+    removeTodo(todo.id);
+    saveTodos(todos);
+    renderTodos(todos, filters);
+  });
 
   return todoEl;
 };
