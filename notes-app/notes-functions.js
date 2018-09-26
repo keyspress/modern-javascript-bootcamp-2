@@ -23,7 +23,7 @@ const removeNote = id => {
 
 const generateNoteDOM = note => {
   const noteEl = document.createElement('div');
-  const textEl = document.createElement('span');
+  const textEl = document.createElement('a');
   const button = document.createElement('button');
 
   // Setup remove note button
@@ -41,6 +41,10 @@ const generateNoteDOM = note => {
   } else {
     textEl.textContent = 'Unamed note';
   }
+  textEl.setAttribute(
+    'href',
+    `http://127.0.0.1:5500/notes-app/edit.html#${note.id}`
+  );
   noteEl.appendChild(textEl);
 
   return noteEl;
