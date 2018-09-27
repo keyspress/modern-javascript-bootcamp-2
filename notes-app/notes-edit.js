@@ -6,7 +6,7 @@ const noteId = location.hash.substring(1);
 let notes = getSavedNotes();
 let note = notes.find(note => note.id === noteId);
 
-if (note === undefined) {
+if (!note) {
   location.assign('http://127.0.0.1:5500/notes-app/index.html');
 }
 
@@ -39,7 +39,7 @@ window.addEventListener('storage', e => {
     notes = JSON.parse(e.newValue);
     note = notes.find(note => note.id === noteId);
 
-    if (note === undefined) {
+    if (!note) {
       location.assign('http://127.0.0.1:5500/notes-app/index.html');
     }
 
