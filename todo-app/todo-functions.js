@@ -12,9 +12,7 @@ const saveTodos = todos => {
 };
 
 const removeTodo = id => {
-  const todoIndex = todos.findIndex(todo => {
-    return todo.id === id;
-  });
+  const todoIndex = todos.findIndex(todo => todo.id === id);
 
   if (todoIndex > -1) {
     todos.splice(todoIndex, 1);
@@ -22,9 +20,7 @@ const removeTodo = id => {
 };
 
 const toggleTodo = id => {
-  const todo = todos.find(todo => {
-    return todo.id === id;
-  });
+  const todo = todos.find(todo => todo.id === id);
 
   if (todo !== undefined) {
     todo.completed = !todo.completed;
@@ -32,13 +28,11 @@ const toggleTodo = id => {
 };
 
 const renderTodos = (todos, filters) => {
-  const filteredTodos = todos.filter(todo => {
-    return todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
-  });
+  const filteredTodos = todos.filter(todo =>
+    todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+  );
 
-  const incompleteTodos = filteredTodos.filter(todo => {
-    return !todo.completed;
-  });
+  const incompleteTodos = filteredTodos.filter(todo => !todo.completed);
 
   document.querySelector('#todos').innerHTML = '';
 

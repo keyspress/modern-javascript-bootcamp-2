@@ -12,9 +12,7 @@ const saveNotes = notes => {
 };
 
 const removeNote = id => {
-  const noteIndex = notes.findIndex(note => {
-    return note.id === id;
-  });
+  const noteIndex = notes.findIndex(note => note.id === id);
 
   if (noteIndex > -1) {
     notes.splice(noteIndex, 1);
@@ -88,9 +86,9 @@ const sortNotes = (notes, sortBy) => {
 
 const renderNotes = (notes, filters) => {
   notes = sortNotes(notes, filters.sortBy);
-  const filteredNotes = notes.filter(note => {
-    return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
-  });
+  const filteredNotes = notes.filter(note =>
+    note.title.toLowerCase().includes(filters.searchText.toLowerCase())
+  );
 
   document.querySelector('#notes').innerHTML = '';
 
@@ -100,6 +98,5 @@ const renderNotes = (notes, filters) => {
   });
 };
 
-const generateLastEdited = timestamp => {
-  return `Last edited ${moment(timestamp).fromNow()}`;
-};
+const generateLastEdited = timestamp =>
+  `Last edited ${moment(timestamp).fromNow()}`;

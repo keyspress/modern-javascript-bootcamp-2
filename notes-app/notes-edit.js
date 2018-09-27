@@ -4,9 +4,7 @@ const removeElement = document.querySelector('#remove-note');
 const dateElement = document.querySelector('#last-edited');
 const noteId = location.hash.substring(1);
 let notes = getSavedNotes();
-let note = notes.find(note => {
-  return note.id === noteId;
-});
+let note = notes.find(note => note.id === noteId);
 
 if (note === undefined) {
   location.assign('http://127.0.0.1:5500/notes-app/index.html');
@@ -39,9 +37,7 @@ removeElement.addEventListener('click', e => {
 window.addEventListener('storage', e => {
   if (e.key === 'notes') {
     notes = JSON.parse(e.newValue);
-    note = notes.find(note => {
-      return note.id === noteId;
-    });
+    note = notes.find(note => note.id === noteId);
 
     if (note === undefined) {
       location.assign('http://127.0.0.1:5500/notes-app/index.html');
