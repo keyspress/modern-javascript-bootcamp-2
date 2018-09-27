@@ -32,3 +32,24 @@ window.addEventListener('storage', e => {
     renderNotes(notes, filters);
   }
 });
+
+const now = new Date();
+const timestamp = now.getTime();
+
+const myDate = new Date(timestamp);
+console.log(myDate.getFullYear());
+
+// console.log(`Year: ${now.getFullYear()}`);
+// console.log(`Month: ${now.getMonth()}`);
+// console.log(`Day of month: ${now.getDate()}`);
+// console.log(`Hours: ${now.getHours()}`);
+// console.log(`Minute: ${now.getMinutes()}`);
+// console.log(`Seconds: ${now.getSeconds()}`);
+
+const myBDay = new Date('October 4 1976 5:00:30');
+const kaceBDay = new Date('December 5 2015 8:36:05');
+
+const myTStamp = myBDay.getTime();
+const kaceTStamp = kaceBDay.getTime();
+
+console.log(myTStamp > kaceTStamp ? myBDay.toString() : kaceBDay.toString());
