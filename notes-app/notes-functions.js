@@ -62,3 +62,7 @@ const renderNotes = (notes, filters) => {
     document.querySelector('#notes').appendChild(noteEl);
   });
 };
+
+const generateLastEdited = timestamp => {
+  return `Last edited ${moment(timestamp).fromNow()}`;
+};
