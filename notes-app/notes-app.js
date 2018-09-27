@@ -33,23 +33,19 @@ window.addEventListener('storage', e => {
   }
 });
 
-const now = new Date();
-const timestamp = now.getTime();
+// const now = moment();
+// now.add(1, 'year').subtract(20, 'days');
+// console.log(now.format('MMMM Do, YYYY'));
 
-const myDate = new Date(timestamp);
-console.log(myDate.getFullYear());
+// console.log(now.fromNow());
 
-// console.log(`Year: ${now.getFullYear()}`);
-// console.log(`Month: ${now.getMonth()}`);
-// console.log(`Day of month: ${now.getDate()}`);
-// console.log(`Hours: ${now.getHours()}`);
-// console.log(`Minute: ${now.getMinutes()}`);
-// console.log(`Seconds: ${now.getSeconds()}`);
+// const nowTimestamp = now.valueOf();
 
-const myBDay = new Date('October 4 1976 5:00:30');
-const kaceBDay = new Date('December 5 2015 8:36:05');
+// console.log(moment(nowTimestamp).toString());
 
-const myTStamp = myBDay.getTime();
-const kaceTStamp = kaceBDay.getTime();
+const bDay = moment()
+  .year(1976)
+  .month('October')
+  .date(4);
 
-console.log(myTStamp > kaceTStamp ? myBDay.toString() : kaceBDay.toString());
+console.log(bDay.format('MMM D, YYYY'));
