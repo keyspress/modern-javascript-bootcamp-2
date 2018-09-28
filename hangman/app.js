@@ -1,9 +1,7 @@
-const product = {
-  name: 'Harry Potter'
-};
+const product = 'string';
 
-Object.prototype.hasOwnProperty = () => 'new function';
-Object.prototype.someNewMethod = () => 'new function';
+console.log(product);
 
-console.log(product.hasOwnProperty('hasOwnProperty'));
-console.log(product.someNewMethod());
+const otherProduct = new String('phone');
+
+console.log(otherProduct);
