@@ -2,4 +2,4 @@ console.log('5' + 5);
 console.log('5' - 5);
 console.log('5' == 5);
 
-console.log(typeof 123);
+console.lo(typeof 123);

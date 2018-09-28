@@ -1,4 +1,7 @@
 let gradeCalc = function(score, totalScore) {
+  if (typeof score !== 'number' || typeof totalScore !== 'number') {
+    throw Error('Arguments must be numbers.');
+  }
   let percent = (score / totalScore) * 100;
   let grade;
   if (percent >= 90) {
@@ -15,7 +18,17 @@ let gradeCalc = function(score, totalScore) {
   return `You got a ${grade} (${percent.toFixed(0)}%)`;
 };
 
-console.log(gradeCalc(10, 100));
-console.log(gradeCalc(18, 20));
-console.log(gradeCalc(55, 100));
-console.log(gradeCalc(70, 100));
+try {
+  console.log(gradeCalc(10, 100));
+  console.log(gradeCalc(18, 20));
+} catch (e) {
+  console.log('error caught');
+}
+
+try {
+  console.log(gradeCalc('dog', 'cat'));
+} catch (e) {
+  console.log(e.message);
+}
+
+// console.log(gradeCalc(true, false));
