@@ -19,6 +19,16 @@ Hangman.prototype.calculateStatus = function() {
   }
 };
 
+Hangman.prototype.getStatusMessage = function() {
+  if (this.status === 'playing') {
+    return `Guesses left: ${this.remainingGuesses}`;
+  } else if (this.status === 'failed') {
+    return `Nice try! The word was "${this.word.join('')}"`;
+  } else {
+    return 'Great work! You win!';
+  }
+};
+
 Hangman.prototype.getPuzzle = function() {
   let puzzle = '';
   this.word.forEach(letter => {
@@ -36,24 +46,16 @@ Hangman.prototype.makeGuess = function(guess) {
   const isUnique = !this.guessedLetters.includes(guess);
   const isBadGuess = !this.word.includes(guess);
 
-  if (isUnique && this.status === 'playing') {
+  if (this.status !== 'playing') {
+    return;
+  }
+
+  if (isUnique) {
     this.guessedLetters.push(guess);
   }
-  if (isUnique && isBadGuess && this.status === 'playing') {
+  if (isUnique && isBadGuess) {
     this.remainingGuesses--;
   }
 
   this.calculateStatus();
-};
-
-Hangman.prototype.showStatusMessage = function() {
-  let statusMessage = '';
-  if (this.status === 'playing') {
-    statusMessage = `Guesses left: ${this.remainingGuesses}`;
-  } else if (this.status === 'failed') {
-    statusMessage = `Nice try! The word was "${this.word.join('')}"`;
-  } else {
-    statusMessage = 'Great work! You win!';
-  }
-  return statusMessage;
 };
