@@ -36,12 +36,24 @@ Hangman.prototype.makeGuess = function(guess) {
   const isUnique = !this.guessedLetters.includes(guess);
   const isBadGuess = !this.word.includes(guess);
 
-  if (isUnique) {
+  if (isUnique && this.status === 'playing') {
     this.guessedLetters.push(guess);
   }
-  if (isUnique && isBadGuess) {
+  if (isUnique && isBadGuess && this.status === 'playing') {
     this.remainingGuesses--;
   }
 
   this.calculateStatus();
+};
+
+Hangman.prototype.showStatusMessage = function() {
+  let statusMessage = '';
+  if (this.status === 'playing') {
+    statusMessage = `Guesses left: ${this.remainingGuesses}`;
+  } else if (this.status === 'failed') {
+    statusMessage = `Nice try! The word was "${this.word.join('')}"`;
+  } else {
+    statusMessage = 'Great work! You win!';
+  }
+  return statusMessage;
 };
