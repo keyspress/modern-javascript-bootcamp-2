@@ -5,6 +5,36 @@ const Hangman = function(word, remainingGuesses) {
   this.status = 'playing';
 };
 
+Hangman.prototype.calculateStatus = function() {
+  // ***Teacher solution 3***
+  const finished = this.word.every(letter =>
+    this.guessedLetters.includes(letter)
+  );
+
+  // ***Teacher solution 2***
+  // const lettersUnguessed = this.word.filter(letter => {
+  //   return !this.guessedLetters.includes(letter);
+  // });
+  // const finished = lettersUnguessed.length === 0;
+
+  // ***Teacher solution 1***
+  // let finished = true;
+  // this.word.forEach(letter => {
+  //   if (this.guessedLetters.includes(letter)) {
+  //   } else {
+  //     finished = false;
+  //   }
+  // });
+
+  if (this.remainingGuesses === 0) {
+    this.status = 'failed';
+  } else if (finished) {
+    this.status = 'finished';
+  } else {
+    this.staus = 'playing';
+  }
+};
+
 Hangman.prototype.getPuzzle = function() {
   let puzzle = '';
   this.word.forEach(letter => {
@@ -28,23 +58,6 @@ Hangman.prototype.makeGuess = function(guess) {
   if (isUnique && isBadGuess) {
     this.remainingGuesses--;
   }
-};
 
-Hangman.prototype.determineStatus = function() {
-  let puzzle = this.getPuzzle();
-  let splitPuzzle = puzzle.split('');
-  let maskedRemaining = false;
-  splitPuzzle.forEach(letter => {
-    if (letter === '*') {
-      maskedRemaining = true;
-    }
-  });
-  if (maskedRemaining && this.remainingGuesses === 0) {
-    this.status = 'failed';
-  } else if (maskedRemaining && this.remainingGuesses > 0) {
-    this.status = 'playing';
-  } else {
-    this.status = 'finished';
-  }
-  return this.status;
+  this.calculateStatus();
 };
