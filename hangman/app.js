@@ -33,10 +33,10 @@ const countryCode = 'US';
 countryRequest.addEventListener('readystatechange', e => {
   if (e.target.readyState === 4 && e.target.status === 200) {
     const data = JSON.parse(e.target.responseText);
-    const country = data.filter(country => {
-      return country.alpha2Code === countryCode;
-    });
-    console.log(country[0].name);
+    const country = data.find(country => country.alpha2Code === countryCode);
+    // const country = data.filter(country => country.alpha2Code === countryCode);
+    // console.log(country[0].name);
+    console.log(country.name);
   } else if (e.target.readyState === 4) {
     console.log('error');
   }
