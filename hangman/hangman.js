@@ -6,25 +6,9 @@ const Hangman = function(word, remainingGuesses) {
 };
 
 Hangman.prototype.calculateStatus = function() {
-  // ***Teacher solution 3***
   const finished = this.word.every(letter =>
     this.guessedLetters.includes(letter)
   );
-
-  // ***Teacher solution 2***
-  // const lettersUnguessed = this.word.filter(letter => {
-  //   return !this.guessedLetters.includes(letter);
-  // });
-  // const finished = lettersUnguessed.length === 0;
-
-  // ***Teacher solution 1***
-  // let finished = true;
-  // this.word.forEach(letter => {
-  //   if (this.guessedLetters.includes(letter)) {
-  //   } else {
-  //     finished = false;
-  //   }
-  // });
 
   if (this.remainingGuesses === 0) {
     this.status = 'failed';
