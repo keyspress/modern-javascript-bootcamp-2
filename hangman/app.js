@@ -36,3 +36,14 @@ getLocation()
   .catch(err => {
     console.log(`Error: ${err}`);
   });
+
+getLocation()
+  .then(location => {
+    return getCountry(location.country);
+  })
+  .then(country => {
+    console.log(country.name);
+  })
+  .catch(err => {
+    console.log(`Error: ${err}`);
+  });
