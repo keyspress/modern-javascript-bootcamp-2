@@ -29,17 +29,10 @@ getCountry('MX')
     console.log(`Error: ${err}`);
   });
 
-// fetch('http://puzzle.mead.io/puzzle', {})
-//   .then(response => {
-//     if (response.status === 200) {
-//       return response.json();
-//     } else {
-//       throw new Error('Unable to fetch puzzle');
-//     }
-//   })
-//   .then(data => {
-//     console.log(data.puzzle);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
+getLocation()
+  .then(location => {
+    console.log(`${location.city}, ${location.region} ${location.country}`);
+  })
+  .catch(err => {
+    console.log(`Error: ${err}`);
+  });
