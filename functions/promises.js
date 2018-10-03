@@ -13,13 +13,16 @@ getDataCallback((err, data) => {
   }
 });
 
-const myPromise = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    // resolve('this is the promised data');
-    reject('error as promised');
-    reject('error as promised');
-  }, 2000);
-});
+const getDataPromise = data =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(`success: ${data}`);
+      // reject('error as promised');
+      // reject('error as promised');
+    }, 2000);
+  });
+
+const myPromise = getDataPromise(123);
 
 myPromise.then(
   data => {
