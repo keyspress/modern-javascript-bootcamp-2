@@ -21,7 +21,7 @@ getPuzzle('3', (error, puzzle) => {
   }
 });
 
-getCountry('US', (error, country) => {
+getCountry('MX', (error, country) => {
   if (error) {
     console.log(`Error: ${error}`);
   } else {
