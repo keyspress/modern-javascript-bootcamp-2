@@ -10,8 +10,15 @@ window.addEventListener('keypress', e => {
 });
 
 const render = () => {
-  puzzleEl.textContent = game1.puzzle;
+  puzzleEl.innerHTML = '';
   guessesEl.textContent = game1.statusMessage;
+
+  puzzleArr = game1.puzzle.split('');
+  puzzleArr.forEach(letter => {
+    const item = document.createElement('span');
+    item.textContent = letter;
+    puzzleEl.appendChild(item);
+  });
 };
 
 const startGame = async () => {
