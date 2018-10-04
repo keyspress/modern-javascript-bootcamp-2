@@ -13,11 +13,10 @@ const render = () => {
   puzzleEl.innerHTML = '';
   guessesEl.textContent = game1.statusMessage;
 
-  puzzleArr = game1.puzzle.split('');
-  puzzleArr.forEach(letter => {
-    const item = document.createElement('span');
-    item.textContent = letter;
-    puzzleEl.appendChild(item);
+  game1.puzzle.split('').forEach(letter => {
+    const letterEl = document.createElement('span');
+    letterEl.textContent = letter;
+    puzzleEl.appendChild(letterEl);
   });
 };
 

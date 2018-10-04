@@ -6,19 +6,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Edit Note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css" />
 </head>
 
 <body>
-  <a href="http://127.0.0.1:5500/notes-app/index.html">Home</a>
-  <input id="note-title" placeholder="Note title">
-  <span id="last-edited"></span>
-  <textarea id="note-body" placeholder="Enter note text"></textarea>
-  <button id="remove-note">Remove Note</button>
+  <header class="header">
+    <div class="container">
+      <h1 class="header__title">Notes App</h1>
+      <h2 class="header__subtitle">Take notes and never forget</h2>
+    </div>
+  </header>
+  <div class="actions">
+    <div class="actions__container actions__container--spaced">
+      <a href="http://127.0.0.1:5500/notes-app/index.html">Home</a>
+      <span id="last-edited"></span>
+    </div>
+  </div>
+  <div class="container">
+    <input id="note-title" placeholder="Note title" class="title-input">
+    <textarea id="note-body" placeholder="Enter note text" class="body-input"></textarea>
+    <button id="remove-note" class="button button--secondary">Remove Note</button>
+  </div>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
-  <script src="notes-functions.js"></script>
-  <script src="notes-edit.js"></script>
+  <script src="scripts/notes-functions.js"></script>
+  <script src="scripts/notes-edit.js"></script>
 </body>
 
 </html>
