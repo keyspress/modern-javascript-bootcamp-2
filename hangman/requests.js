@@ -20,33 +20,16 @@ const getCountry = async countryCode => {
   }
 };
 
-const getCountryOld = countryCode => {
-  return fetch('http://restcountries.eu/rest/v2/all')
-    .then(response => {
-      if (response.status === 200) {
-        return response.json();
-      } else {
-        throw new Error('Unable to fetch data');
-      }
-    })
-    .then(data => data.find(country => country.alpha2Code === countryCode));
-};
-
 const getLocation = async () => {
   const response = await fetch('http://ipinfo.io/json?token=386f858124da7e');
   if (response.status === 200) {
-    return await response.json();
+    return response.json();
   } else {
     throw new Error('Unable to fetch data');
   }
 };
 
-const getLocationOld = () => {
-  return fetch('http://ipinfo.io/json?token=386f858124da7e').then(response => {
-    if (response.status === 200) {
-      return response.json();
-    } else {
-      throw new Error('Unable to fetch data');
-    }
-  });
+const getCurrentCountry = async () => {
+  const location = await getLocation();
+  return getCountry(location.country);
 };

@@ -21,29 +21,10 @@ getPuzzle('3')
     console.log(`Error: ${err}`);
   });
 
-getCountry('MX')
+getCurrentCountry()
   .then(country => {
     console.log(country.name);
   })
   .catch(err => {
-    console.log(`Error: ${err}`);
-  });
-
-getLocation()
-  .then(location => {
-    console.log(`${location.city}, ${location.region} ${location.country}`);
-  })
-  .catch(err => {
-    console.log(`Error: ${err}`);
-  });
-
-getLocation()
-  .then(location => {
-    return getCountry(location.country);
-  })
-  .then(country => {
-    console.log(country.name);
-  })
-  .catch(err => {
-    console.log(`Error: ${err}`);
+    console.log(err);
   });
