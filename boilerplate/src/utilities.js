@@ -1,6 +1,6 @@
 const add = (a, b) => a + b;
 
-const name = 'Kyle';
+const name = 'Bob';
 
 const square = x => x * x;
 
