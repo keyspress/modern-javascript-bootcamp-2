@@ -8,15 +8,9 @@ const calculateAverage = (thing, ...numbers) => {
 console.log(calculateAverage('grade', 0, 100, 88, 64));
 
 const printTeam = (team, coach, ...players) => {
-  let playerList = '';
-  players.forEach((player, index) => {
-    if (index !== players.length - 1) {
-      playerList += `${player}, `;
-    } else {
-      playerList += player;
-    }
-  });
-  console.log(`Team: ${team}\nCoach: ${coach}\nPlayers: ${playerList}`);
+  console.log(`Team: ${team}`);
+  console.log(`Coach: ${coach}`);
+  console.log(`Players: ${players.join(', ')}`);
 };
 
 printTeam('Liberty', 'Casey Penn', 'Marge', 'Aiden', 'Herbert', 'Sherry');
