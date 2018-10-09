@@ -1,49 +1,29 @@
-const printTeam = (team, coach, ...players) => {
-  console.log(`Team: ${team}`);
-  console.log(`Coach: ${coach}`);
-  console.log(`Players: ${players.join(', ')}`);
+const todo = {
+  id: 'dfdfsdasdfasdfsd',
+  text: 'Pay the bills',
+  completed: false
 };
 
-const team = {
-  name: 'Liberty',
-  coach: 'Casey Penn',
-  players: ['Marge', 'Aiden', 'Herbert', 'Sherry']
+const printTodo = ({ text, completed }) => {
+  console.log(`${text}: ${completed}`);
 };
+printTodo(todo);
 
-printTeam(team.name, team.coach, ...team.players);
+const {
+  text: todoText,
+  completed,
+  details: otherDetails = 'No details',
+  ...others
+} = todo;
 
-let cities = ['Barcelona', 'Cape Town', 'Bordeaux'];
-cities = ['Miami', ...cities, 'Santiago'];
+console.log(completed);
+console.log(todoText);
+console.log(otherDetails);
+console.log(others);
 
-console.log(cities);
+const age = [65, 0, 13];
 
-let house = {
-  bedrooms: 2,
-  bathrooms: 1.5,
-  yearBuilt: 2000
-};
+const [firstAge, ...otherAges] = age;
 
-let newHouse = {
-  basement: true,
-  ...house,
-  bedrooms: 3
-};
-
-console.log(house);
-console.log(newHouse);
-
-const person = {
-  name: 'Jim',
-  age: 34
-};
-
-const location = {
-  city: 'Tampa',
-  country: 'US'
-};
-
-const overview = {
-  ...person,
-  ...location
-};
-console.log(overview);
+console.log(firstAge);
+console.log(otherAges);

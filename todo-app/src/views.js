@@ -6,9 +6,9 @@ import { getFilters } from './filters';
 // Return value: none
 const renderTodos = () => {
   const todoEl = document.querySelector('#todos');
-  const filters = getFilters();
+  const { searchText, hideCompleted } = getFilters();
   const filteredTodos = getTodos().filter(todo =>
-    todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    todo.text.toLowerCase().includes(searchText.toLowerCase())
   );
 
   const incompleteTodos = filteredTodos.filter(todo => !todo.completed);
@@ -19,7 +19,7 @@ const renderTodos = () => {
     .querySelector('#todos')
     .appendChild(generateSummaryDOM(incompleteTodos));
 
-  const renderedTodos = filters.hideCompleted ? incompleteTodos : filteredTodos;
+  const renderedTodos = hideCompleted ? incompleteTodos : filteredTodos;
 
   if (renderedTodos.length > 0) {
     renderedTodos.forEach(todo => {
