@@ -1,37 +1,13 @@
-'use strict';
+import { getTodos, removeTodo, toggleTodo } from './todos';
+import { getFilters } from './filters';
 
-const getSavedTodos = () => {
-  const todosJSON = localStorage.getItem('todos');
-  try {
-    return todosJSON ? JSON.parse(todosJSON) : [];
-  } catch (e) {
-    return [];
-  }
-};
-
-const saveTodos = todos => {
-  localStorage.setItem('todos', JSON.stringify(todos));
-};
-
-const removeTodo = id => {
-  const todoIndex = todos.findIndex(todo => todo.id === id);
-
-  if (todoIndex > -1) {
-    todos.splice(todoIndex, 1);
-  }
-};
-
-const toggleTodo = id => {
-  const todo = todos.find(todo => todo.id === id);
-
-  if (todo) {
-    todo.completed = !todo.completed;
-  }
-};
-
-const renderTodos = (todos, filters) => {
+// renderTodos
+// Arguments: none
+// Return value: none
+const renderTodos = () => {
   const todoEl = document.querySelector('#todos');
-  const filteredTodos = todos.filter(todo =>
+  const filters = getFilters();
+  const filteredTodos = getTodos().filter(todo =>
     todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
   );
 
@@ -57,6 +33,9 @@ const renderTodos = (todos, filters) => {
   }
 };
 
+// generateTodoDOM
+// Arguments: todo
+// Return value: the todo element
 const generateTodoDOM = todo => {
   const todoEl = document.createElement('label');
   const containerEl = document.createElement('div');
@@ -70,8 +49,7 @@ const generateTodoDOM = todo => {
   containerEl.appendChild(checkbox);
   checkbox.addEventListener('change', () => {
     toggleTodo(todo.id);
-    saveTodos(todos);
-    renderTodos(todos, filters);
+    renderTodos();
   });
 
   // Setup text
@@ -89,13 +67,15 @@ const generateTodoDOM = todo => {
   todoEl.appendChild(removeButton);
   removeButton.addEventListener('click', () => {
     removeTodo(todo.id);
-    saveTodos(todos);
-    renderTodos(todos, filters);
+    renderTodos();
   });
 
   return todoEl;
 };
 
+// generateSummaryDOM
+// Arguments: incompletedTodos
+// Return value: the summary element
 const generateSummaryDOM = incompleteTodos => {
   const summary = document.createElement('h2');
   const plural = incompleteTodos.length === 1 ? '' : 's';
@@ -103,3 +83,6 @@ const generateSummaryDOM = incompleteTodos => {
   summary.textContent = `You have ${incompleteTodos.length} todo${plural} left`;
   return summary;
 };
+
+// Make sure to set up the exports
+export { renderTodos, generateTodoDOM, generateSummaryDOM };
